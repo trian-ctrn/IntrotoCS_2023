@@ -3,5 +3,6 @@ This project is part of the Introduction to Computer Science 2023 course at the 
 ## Model Zoo 
 We provide some models to use in this project: 
 ||Name|url|size|
+|---|---|---|---|
 |0|RCNN|||
 |1|Yolov7|||
