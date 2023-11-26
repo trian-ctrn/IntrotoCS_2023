@@ -6,6 +6,7 @@ We provide some models to use in this project:
 |---|---|--------|---|
 |0|RCNN|[model](https://drive.google.com/uc?export=download&id=1-PhXe-WUdzziK2T0WM0c9aMur0bTLkH8)|217.5Mb|
 |1|Yolov7|[model](https://drive.google.com/uc?export=download&id=10CUFS0mtObpQDVzm7TAxE6LvfpEC7r65)|284.6Mb|
+|2|Faster RCNN|[model](https://drive.google.com/uc?export=download&id=1DtVlGqlJiOKLBB0rsJDhyCfKsQgI15R9)|158.1Mb|
 
 ## How to use the Faster R-CNN Notebook:
 1. Connect your notebook to Runtime (Preferably T4 GPU)
