@@ -42,7 +42,7 @@ model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 num_epochs = 100
 ```
 3. Wait for the training to complete
-4. Run the last few blocks to generate the detection results
+4. Run the last few blocks to generate the detection result
 ## Save and import model
 1. Save model:
 ```
