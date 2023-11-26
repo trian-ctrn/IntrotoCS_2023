@@ -20,8 +20,9 @@ Our tree dataset has 405 images of size 1024 x 1024, which have been divided int
 We provide some models to use in this project: 
 ||Name|url|size|
 |---|---|--------|---|
-|0|RCNN|[model](https://drive.google.com/uc?export=download&id=1-PhXe-WUdzziK2T0WM0c9aMur0bTLkH8)|217.5Mb|
-|1|Yolov7|[model](https://drive.google.com/uc?export=download&id=10CUFS0mtObpQDVzm7TAxE6LvfpEC7r65)|284.6Mb|
+|0|Faster_RCNN|[model](https://drive.google.com/uc?export=download&id=1DtVlGqlJiOKLBB0rsJDhyCfKsQgI15R9)|158.1Mb|
+|1|RCNN|[model](https://drive.google.com/uc?export=download&id=1-PhXe-WUdzziK2T0WM0c9aMur0bTLkH8)|217.5Mb|
+|2|Yolov7|[model](https://drive.google.com/uc?export=download&id=10CUFS0mtObpQDVzm7TAxE6LvfpEC7r65)|284.6Mb|
 
 ## How to use the Faster R-CNN Notebook:
 1. Connect your notebook to Runtime (Preferably T4 GPU)
