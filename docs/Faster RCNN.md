@@ -28,11 +28,17 @@ drive.mount('/content/gdrive', force_remount=True)
 4. To prepare the dataset, remember to modify your directories for train_dir and test_dir
 5. Run the next 2 blocks to define some necessary functions
 6. In the get_object_detection_model function, you can choose to pretrain or not
+```
+model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
+```
 ## Train and get result:
 1. Run a few more blocks to prepare for training
 2. In the training block, you can adjust num_epochs and then start training
-3. Wait for the training to complete
-4. Run the last few blocks to generate the detection results
+```
+num_epochs = 50
+```
+4. Wait for the training to complete
+5. Run the last few blocks to generate the detection results
 ## Save and import model
 1. Save model:
 ```
