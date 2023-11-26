@@ -30,8 +30,8 @@ drive.mount('/content/gdrive', force_remount=True)
 train_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
 test_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
 ```
-6. Run the next 2 blocks to define some necessary functions
-7. In the get_object_detection_model function, you can choose to pretrain or not
+5. Run the next 2 blocks to define some necessary functions
+6. In the get_object_detection_model function, you can choose to pretrain or not
 ```
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 ```
@@ -41,8 +41,8 @@ model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 ```
 num_epochs = 100
 ```
-4. Wait for the training to complete
-5. Run the last few blocks to generate the detection results
+3. Wait for the training to complete
+4. Run the last few blocks to generate the detection results
 ## Save and import model
 1. Save model:
 ```
