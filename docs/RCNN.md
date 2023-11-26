@@ -19,9 +19,9 @@ Watch [here](https://learnopencv.com/non-maximum-suppression-theory-and-implemen
 
 # Note
 1. We can change the strategy of the selective 
-   ```
-   config(gs, img, strategy='q')
-   ```
+```
+config(gs, img, strategy='q')
+```
 Base on the code we have 3 strategies to choose: 
 ```
 def config(gs, img, strategy='q'):
