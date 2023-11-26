@@ -14,7 +14,7 @@ This project is part of the Introduction to Computer Science 2023 course at the 
 - Dr. Nhan Le
 
 ## Dataset
-Our tree dataset has 405 images of size 1024 x 1024, which have been divided into the train, validation, and test set with a ratio of 0.7:0.2:0.1. The dataset can be found [here](https://drive.google.com/drive/folders/1ylXgcWFMX43FdWxA-oHMlztELLNFdbgY?usp=sharing)
+Our tree dataset has 405 images of size 1024 x 1024, which have been divided into the train, validation, and test set with a ratio of 0.7:0.2:0.1. The dataset can be found [here](https://drive.google.com/drive/folders/1ylXgcWFMX43FdWxA-oHMlztELLNFdbgY?usp=sharing).
 
 ## Model Zoo 
 We provide some models to use in this project: 
