@@ -15,7 +15,7 @@ Watch [here](https://learnopencv.com/non-maximum-suppression-theory-and-implemen
 
 ## Implement parameters
 - Non-maximum suppression threshold: 0.3
-- Classifier threshold: 0.6
+- Classifier threshold: 0.55
 
 # Note
 1. We can change the strategy of the selective 
