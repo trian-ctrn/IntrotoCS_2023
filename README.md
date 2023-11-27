@@ -22,7 +22,7 @@ We provide some models to use in this project:
 |---|---|--------|---|
 |0|Faster_RCNN|[model](https://drive.google.com/uc?export=download&id=1DtVlGqlJiOKLBB0rsJDhyCfKsQgI15R9)|158.1Mb|
 |1|RCNN|[model](https://drive.google.com/uc?export=download&id=1-PhXe-WUdzziK2T0WM0c9aMur0bTLkH8)|217.5Mb|
-|2|SSD|[model](https://drive.google.com/uc?export=download&id=1zng-5ox1WRqLH_4psbr21WZ8L4I2vA1y)|11.5Mb|
+|2|SSD|[model](https://drive.google.com/uc?export=download&id=1zng-5ox1WRqLH_4psbr21WZ8L4I2vA1y)|11Mb|
 |3|Yolov7|[model](https://drive.google.com/uc?export=download&id=10CUFS0mtObpQDVzm7TAxE6LvfpEC7r65)|284.6Mb|
 
 ## Acknowledgments
