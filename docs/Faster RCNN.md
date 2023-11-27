@@ -55,7 +55,14 @@ for epoch in range(num_epochs):
 
 !nvidia-smi
 ```
-## Save and import model
+5. To view results, you can uncomment these code:
+```
+print('EXPECTED OUTPUT\n')
+plot_img_bbox(torch_to_pil(img), target)
+print('MODEL OUTPUT\n')
+plot_img_bbox(torch_to_pil(img), nms_prediction)
+```
+## Save and import model:
 1. Save model:
 ```
 files_dir = r"/content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN/weights"
