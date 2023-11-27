@@ -30,7 +30,17 @@ test_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
 ```
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 ```
-3. In the training block, you can adjust num_epochs and then start training
+3. If you have a strong processor, you can increase num_workers:
+```
+data_loader = torch.utils.data.DataLoader(
+    dataset, batch_size=8, shuffle=True, num_workers=4,
+    collate_fn=utils.collate_fn)
+
+data_loader_val = torch.utils.data.DataLoader(
+    dataset_val, batch_size=8, shuffle=False, num_workers=4,
+    collate_fn=utils.collate_fn)
+```
+4. In the training block, you can adjust num_epochs and then start training
 ```
 num_epochs = 100
 
