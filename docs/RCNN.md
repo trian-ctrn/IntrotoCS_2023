@@ -27,49 +27,40 @@ lr_scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=7, gamma=0.1)
 best_model = train_model(data_loaders, model, criterion, optimizer, lr_scheduler, device=device, num_epochs=10)
 ```
 ## SVM (Support Vector Machine)
-From features we take from CNN, we use linear SVM to classifier which is a tree and which is not a tree. And it will return 2 numbers and put in an array which a first index is probability that the box is not contain a tree and the second index represent the probabilitu that the box contain a tree: 
-1. Run the "svm.py" file and change some parameters like the upper progress base on how strong is your GPU and your computer.
-2. After running the file you will get the weights and save it in the "models" folder 
+Using features extracted from the CNN, a linear SVM is employed for classification into tree and non-tree categories:
+1. Running "svm.py"
+- Using features extracted from the CNN, a linear SVM is employed for classification into tree and non-tree categories:
+2. Saving SVM Weights:
+- Upon running the file, the weights obtained are saved in the 'models' folder. 
 
 # Detector Implementation 
 ## Process 
-1. Enter an image
-2. Candidate recommendations are calculated using a selective search algorithm
-3. Count the candidate recommendations one by one
-    i. The features were computed using the AlexNet model
-    ii. The classification results were calculated by using the linear SVM classifier
-4. Perform non-maximum suppression on all candidate recommendations classified as automobiles
+1. Input an image
+2. Calculate candidate recommendations using a selective search algorithm.
+3. Process each recommendation:
+    i. Compute features using the AlexNet model.
+    ii. Employ the linear SVM classifier for classification.
+4. Perform non-maximum suppression on candidate recommendations classified as trees
 
-## Python file 
+## Relevent  file 
 - <mark>**RCNN/inference.py**</mark>
 
 ## Non-maximum suppression
-Watch [here](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch/)
+For a detailed understanding and implementation of non-maximum suppression, refer to [this tutorial](https://learnopencv.com/non-maximum-suppression-theory-and-implementation-in-pytorch/)
 
 ## Implement parameters
 - Non-maximum suppression threshold: 0.3
 - Classifier threshold: 0.55
 
 # Note
-1. We can change the strategy of the selective 
+1. The selective search strategy can be altered:
 ```
 config(gs, img, strategy='q')
 ```
-Base on the config function we have 3 strategies to choose: 
-```
-def config(gs, img, strategy='q'):
-    gs.setBaseImage(img)
-
-    if (strategy == 's'):
-        gs.switchToSingleStrategy() 
-    elif (strategy == 'f'):
-        gs.switchToSelectiveSearchFast()
-    elif (strategy == 'q'):
-        gs.switchToSelectiveSearchQuality()
-    else:
-        print(__doc__)
-        sys.exit(1)
-```
+Available strategies:
+- 's' (Single Strategy)
+- 'f' (Selective Search Fast)
+- 'q' (Selective Search Quality)
 
 # Citation
 ```
