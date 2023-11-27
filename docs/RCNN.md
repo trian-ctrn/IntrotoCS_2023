@@ -3,11 +3,11 @@
 The dataset comprises images and annotation files divided into train, validation, and test sets. Preprocessing involves the following steps:
 1. CSV Creation for Train and Validation:
 
-Create a CSV file for each train and validation folder containing the image IDs, derived from the numbers in the image filenames. For instance, if the train file includes "IMG_1.jpg" and "IMG_5.jpg," the CSV file should contain 1 and 5, respectively.
+- Create a CSV file for each train and validation folder containing the image IDs, derived from the numbers in the image filenames. For instance, if the train file includes "IMG_1.jpg" and "IMG_5.jpg," the CSV file should contain 1 and 5, respectively.
 
 2. Dataset Creation using 'finetune.py' and 'classifier.py':
 
-Run 'finetune.py' and 'classifier.py' in the preprocessing folder to generate two new datasets. This process creates the 'finetune_tree' and 'classifier_tree' folders. Each folder contains CSV files for positive and negative bounding box values.
+- Run 'finetune.py' and 'classifier.py' in the preprocessing folder to generate two new datasets. This process creates the 'finetune_tree' and 'classifier_tree' folders. Each folder contains CSV files for positive and negative bounding box values.
 
 ## CNN (Convolutional Neural Network)
 Utilizing AlexNet for the CNN, the finetune dataset is employed for training. The steps involved are:
