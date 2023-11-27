@@ -21,12 +21,12 @@ git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
 !pip install git+https://github.com/albumentations-team/albumentations.git
 ```
 ## Training Phase:
-1. To prepare the dataset, remember to modify your directories for train_dir and test_dir
+1. To prepare the dataset, remember to modify your directories for train_dir and test_dir:
 ```
 train_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
 test_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
 ```
-2. In the get_object_detection_model function, you can choose to pretrain or not
+2. In the get_object_detection_model function, you can choose to pretrain or not:
 ```
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 ```
@@ -40,7 +40,7 @@ data_loader_val = torch.utils.data.DataLoader(
     dataset_val, batch_size=8, shuffle=False, num_workers=4,
     collate_fn=utils.collate_fn)
 ```
-4. In the training block, you can adjust num_epochs and then start training
+4. In the training block, you can adjust num_epochs and then start training:
 ```
 num_epochs = 100
 
