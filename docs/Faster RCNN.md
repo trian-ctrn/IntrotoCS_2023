@@ -1,16 +1,7 @@
 # How to use the Faster R-CNN Notebook:
-## Stop Colab from disconnecting:
-1. Connect your notebook to Runtime (Preferably T4 GPU)
-2. Paste the following code into the web console (Ctrl + Shift + I):
-```
-function ConnectButton(){
-  console.log("Connect pushed");
-  document.querySelector("#top-toolbar > colab-connectbutton").shadowRoot.querySelector("#connect").click()
-}
-setInterval(ConnectButton,60000);
-```
-## Set up:
-1. Link your Google Drive with the following 2 blocks (Make sure to modify your directories):
+## Link Google Drive:
+1. Create a shortcut of IntroCS_Tree folder to your own Google Drive (https://drive.google.com/drive/u/1/folders/1EbMrlHBU0AREOwSJZF18Q55K0qRG5Uoa)
+2. Link your Google Drive with the following 2 blocks (Make sure to modify your directories):
 ```
 from google.colab import drive
 drive.mount('/content/gdrive', force_remount=True)
@@ -18,31 +9,42 @@ drive.mount('/content/gdrive', force_remount=True)
 ```
 %cd /content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN
 ```
+## Clone project and install libraries:
+1. Clone project to local environment:
+```
+git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
+```
 2. Install necessary libraries:
 ```
 !pip install pycocotools --quiet
 !pip install torchmetrics
 !pip install git+https://github.com/albumentations-team/albumentations.git
 ```
-3. Import the libraries
-4. To prepare the dataset, remember to modify your directories for train_dir and test_dir
+## Training Phase:
+1. To prepare the dataset, remember to modify your directories for train_dir and test_dir
 ```
 train_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
 test_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
 ```
-5. Run the next 2 blocks to define some necessary functions
-6. In the get_object_detection_model function, you can choose to pretrain or not
+2. In the get_object_detection_model function, you can choose to pretrain or not
 ```
 model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
 ```
-## Train and get result:
-1. Run a few more blocks to prepare for training
-2. In the training block, you can adjust num_epochs and then start training
+3. In the training block, you can adjust num_epochs and then start training
 ```
 num_epochs = 100
+
+for epoch in range(num_epochs):
+    print(f"Training epoch: {epoch + 1}/{num_epochs}")
+    # training for one epoch
+    train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=10)
+    # update the learning rate
+    lr_scheduler.step()
+    # evaluate on the test dataset
+    evaluate(model, data_loader_val, device=device)
+
+!nvidia-smi
 ```
-3. Wait for the training to complete
-4. Run the last few blocks to generate the detection result
 ## Save and import model
 1. Save model:
 ```
