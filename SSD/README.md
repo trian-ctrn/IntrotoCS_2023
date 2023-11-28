@@ -38,16 +38,80 @@ git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
 !pip install torchmetrics
 !pip install git+https://github.com/albumentations-team/albumentations.git
 ```
-## Training phase:
-1. To prepare the dataset, remember to modify your directories for train_dir and test_dir:
+## Upload Image Dataset and Prepare Training Data:
+1. Upload the dataset to google drive, remember to modify your directories to the data set. The data set must contain all pictues and its labels in xml format:
 ```
-train_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
-test_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
+from google.colab import drive
+drive.mount('/content/gdrive')
+
+!cp /content/gdrive/MyDrive/images.zip /content
 ```
-2. In the get_object_detection_model function, you can choose to pretrain or not:
+2. Split images into train, validation, and test folders. You can change the ration of train, validation, test images by changing, train_percent, val_percent, test_percent:
 ```
-model = torchvision.models.detection.fasterrcnn_resnet50_fpn(pretrained=True)
-```
+import glob
+from pathlib import Path
+import random
+import os
+
+# Define paths to image folders
+image_path = '/content/images/all'
+train_path = '/content/images/train'
+val_path = '/content/images/validation'
+test_path = '/content/images/test'
+
+# Get list of all images
+jpg_file_list = [path for path in Path(image_path).rglob('*.jpg')]
+JPG_file_list = [path for path in Path(image_path).rglob('*.JPG')]
+png_file_list = [path for path in Path(image_path).rglob('*.png')]
+bmp_file_list = [path for path in Path(image_path).rglob('*.bmp')]
+
+file_list = jpg_file_list + JPG_file_list + png_file_list + bmp_file_list
+file_num = len(file_list)
+print('Total images: %d' % file_num)
+
+# Determine number of files to move to each folder
+train_percent = 0.9  # 80% of the files go to train
+val_percent = 0.1 # 10% go to validation
+test_percent = 0 # 10% go to test
+train_num = int(file_num*train_percent)
+val_num = int(file_num*val_percent)
+test_num = file_num - train_num - val_num
+print('Images moving to train: %d' % train_num)
+print('Images moving to validation: %d' % val_num)
+print('Images moving to test: %d' % test_num)
+
+# Select 80% of files randomly and move them to train folder
+for i in range(train_num):
+    move_me = random.choice(file_list)
+    fn = move_me.name
+    base_fn = move_me.stem
+    parent_path = move_me.parent
+    xml_fn = base_fn + '.xml'
+    os.rename(move_me, train_path+'/'+fn)
+    os.rename(os.path.join(parent_path,xml_fn),os.path.join(train_path,xml_fn))
+    file_list.remove(move_me)
+
+# Select 10% of remaining files and move them to validation folder
+for i in range(val_num):
+    move_me = random.choice(file_list)
+    fn = move_me.name
+    base_fn = move_me.stem
+    parent_path = move_me.parent
+    xml_fn = base_fn + '.xml'
+    os.rename(move_me, val_path+'/'+fn)
+    os.rename(os.path.join(parent_path,xml_fn),os.path.join(val_path,xml_fn))
+    file_list.remove(move_me)
+
+# Move remaining files to test folder
+for i in range(test_num):
+    move_me = random.choice(file_list)
+    fn = move_me.name
+    base_fn = move_me.stem
+    parent_path = move_me.parent
+    xml_fn = base_fn + '.xml'
+    os.rename(move_me, test_path+'/'+fn)
+    os.rename(os.path.join(parent_path,xml_fn),os.path.join(test_path,xml_fn))
+    file_list.remove(move_me)```
 3. If you have a strong processor, you can increase num_workers:
 ```
 data_loader = torch.utils.data.DataLoader(
