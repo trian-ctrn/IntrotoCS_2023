@@ -29,8 +29,8 @@ We provide some models to use in this project:
 We would like to thank our coach Dr. Nhan Le who supported us throughout the development of this project.
 
 ## References
-[1]Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S., Fu, C., … & Berg, A. C. (2016). Ssd: single shot multibox detector. Computer Vision – ECCV 2016, 21-37. https://doi.org/10.1007/978-3-319-46448-0_2 \
-[2]C.-Y. Wang, A. Bochkovskiy, and H.-Y. M. Liao, “YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors.” arXiv, Jul. 06, 2022. doi: 10.48550/arXiv.2207.02696. \
+[1]Liu, W., Anguelov, D., Erhan, D., Szegedy, C., Reed, S., Fu, C.-Y., & Berg, A. C. (2016). SSD: Single Shot MultiBox Detector (Vol. 9905, pp. 21–37). https://doi.org/10.1007/978-3-319-46448-0_2 \
+[2]Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). You Only Look Once: Unified, Real-Time Object Detection. 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 779–788. https://doi.org/10.1109/CVPR.2016.91 \
 [3]R. Girshick, J. Donahue, T. Darrell, and J. Malik, “Rich feature hierarchies for accurate object detection and semantic segmentation,” \
 [4]Sri, M. S., Naik, B. R., & Sankar, K. J. (2021, February 28). Object Detection Based on Faster R-CNN. International Journal of Engineering and Advanced Technology, 10(3), 72–76. https://doi.org/10.35940/ijeat.c2186.0210321
 
