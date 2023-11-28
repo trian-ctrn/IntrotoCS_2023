@@ -16,7 +16,7 @@ Open the Colab notebook in your browser. Work through the instructions in the no
 
 # How to use the SSD Notebook:
 ## Install TensorFlow Object Detection Dependencies:
-1. Clone the tensorflow models repository from GitHub
+1. Clone the TensorFlow models repository from GitHub
 ```
 pip uninstall Cython -y 
 !git clone --depth 1 https://github.com/tensorflow/models
@@ -39,7 +39,7 @@ git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
 !pip install git+https://github.com/albumentations-team/albumentations.git
 ```
 ## Upload Image Dataset and Prepare Training Data:
-1. Upload the dataset to google drive, remember to modify your directories to the data set. The data set must contain all pictues and its labels in xml format:
+1. Upload the dataset to Google Drive, remember to modify your directories to the data set. The data set must contain all pictures and its labels in XML format:
 ```
 from google.colab import drive
 drive.mount('/content/gdrive')
@@ -120,7 +120,7 @@ tree
 EOF
 ```
 ##  Set Up Training Configuration:
-1. Chosing model SSD:
+1. Choosing model SSD:
 ```
 chosen_model = 'ssd-mobilenet-v2-fpnlite-320'
 
@@ -152,7 +152,7 @@ model_name = MODELS_CONFIG[chosen_model]['model_name']
 pretrained_checkpoint = MODELS_CONFIG[chosen_model]['pretrained_checkpoint']
 base_pipeline_file = MODELS_CONFIG[chosen_model]['base_pipeline_file']
 ```
-2. Set training parameters for the model. You can change num_steps to number that you want but recommended num steps is from 2000 to 5000:
+2. Set training parameters for the model. You can change num_steps to the number that you want but recommended num steps are from 2000 to 5000:
 ```
 num_steps = 2000
 
@@ -162,7 +162,7 @@ else:
   batch_size = 16
 ```
 ## Train model:
-Clicking on the play button and waiting for result. It only displays logs once every 100 steps:
+Clicking on the play button and waiting for the result. It only displays logs once every 100 steps:
 ```
 !python /content/models/research/object_detection/model_main_tf2.py \
     --pipeline_config_path={pipeline_file} \
@@ -172,7 +172,7 @@ Clicking on the play button and waiting for result. It only displays logs once e
     --sample_1_of_n_eval_examples=1
 ```
 ## Train model:
-Clicking on the play button and waiting for result. It only displays logs once every 100 steps:
+Clicking on the play button and waiting for the result. It only displays logs once every 100 steps:
 ```
 !python /content/models/research/object_detection/model_main_tf2.py \
     --pipeline_config_path={pipeline_file} \
@@ -191,7 +191,7 @@ PATH_TO_LABELS='/content/labelmap.txt'   # Path to labelmap.txt file
 min_conf_threshold=0.4   # Confidence threshold (try changing this to 0.01 if you don't see any detection results)
 images_to_test = 10   # Number of images to run detection on
 ```
-2. Calculate mAP. You can also change the confidence threshold that affect the detection result similar to above method:
+2. Calculate mAP. You can also change the confidence threshold that affects the detection result similar to the above method:
 ```
 # Set up variables for running inference, this time to get detection results saved as .txt files
 PATH_TO_IMAGES='/content/images/test'   # Path to test images folder
@@ -212,8 +212,8 @@ print('Starting inference on %d images...' % images_to_test)
 tflite_detect_images(PATH_TO_MODEL, PATH_TO_IMAGES, PATH_TO_LABELS, min_conf_threshold, images_to_test, PATH_TO_RESULTS, txt_only)
 print('Finished inferencing!')
 ```
-## Download SSD:
-You can dowload SSD model to your device by clicking play button on this code block:
+## Download SSD model:
+You can download SSD model to your device by clicking the play button on this code block:
 ```
 !cp /content/labelmap.txt /content/custom_model_lite
 !cp /content/labelmap.pbtxt /content/custom_model_lite
