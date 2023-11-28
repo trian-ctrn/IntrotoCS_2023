@@ -212,4 +212,13 @@ print('Starting inference on %d images...' % images_to_test)
 tflite_detect_images(PATH_TO_MODEL, PATH_TO_IMAGES, PATH_TO_LABELS, min_conf_threshold, images_to_test, PATH_TO_RESULTS, txt_only)
 print('Finished inferencing!')
 ```
+## Download SSD:
+You can dowload SSD model to your device by clicking play button on this code block:
+```
+!cp /content/labelmap.txt /content/custom_model_lite
+!cp /content/labelmap.pbtxt /content/custom_model_lite
+!cp /content/models/mymodel/pipeline_file.config /content/custom_model_lite
 
+%cd /content
+!zip -r custom_model_lite.zip custom_model_lite
+```
