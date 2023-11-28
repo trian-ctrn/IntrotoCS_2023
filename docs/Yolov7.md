@@ -31,11 +31,10 @@ test_path = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
 ```
 
 ## Test model
-1. Run Detect block
-```
-!python detect.py --weights runs/train/exp27/weights/best.pt --conf 0.25 --img-size 1024 --source /content/gdrive/MyDrive/IntroCS_Tree/ver12/val/images
-```
-2. Run Test block
 ```
 !python3 test.py --weights runs/train/exp27/weights/best.pt --task test --data data/treecounting.yaml --img-size 1024 --conf-thres 0.40
+```
+## Detect model (Optional)
+```
+!python detect.py --weights runs/train/exp27/weights/best.pt --conf 0.25 --img-size 1024 --source /content/gdrive/MyDrive/IntroCS_Tree/ver12/val/images
 ```
