@@ -20,7 +20,7 @@ git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
 !pip install torchmetrics
 !pip install git+https://github.com/albumentations-team/albumentations.git
 ```
-## Training Phase:
+## Training phase:
 1. To prepare the dataset, remember to modify your directories for train_dir and test_dir:
 ```
 train_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
