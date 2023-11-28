@@ -111,52 +111,63 @@ for i in range(test_num):
     xml_fn = base_fn + '.xml'
     os.rename(move_me, test_path+'/'+fn)
     os.rename(os.path.join(parent_path,xml_fn),os.path.join(test_path,xml_fn))
-    file_list.remove(move_me)```
-3. If you have a strong processor, you can increase num_workers:
+    file_list.remove(move_me)
 ```
-data_loader = torch.utils.data.DataLoader(
-    dataset, batch_size=8, shuffle=True, num_workers=4,
-    collate_fn=utils.collate_fn)
+3. Create Labelmap and TFRecords as your label file:
+```
+cat <<EOF >> /content/labelmap.txt
+tree
+EOF
+```
+##  Set Up Training Configuration:
+1. Chosing model SSD:
+```
+chosen_model = 'ssd-mobilenet-v2-fpnlite-320'
 
-data_loader_val = torch.utils.data.DataLoader(
-    dataset_val, batch_size=8, shuffle=False, num_workers=4,
-    collate_fn=utils.collate_fn)
-```
-4. In the training block, you can adjust num_epochs and then start training:
-```
-num_epochs = 100
+MODELS_CONFIG = {
+    'ssd-mobilenet-v2': {
+        'model_name': 'ssd_mobilenet_v2_320x320_coco17_tpu-8',
+        'base_pipeline_file': 'ssd_mobilenet_v2_320x320_coco17_tpu-8.config',
+        'pretrained_checkpoint': 'ssd_mobilenet_v2_320x320_coco17_tpu-8.tar.gz',
+    },
+    'efficientdet-d0': {
+        'model_name': 'efficientdet_d0_coco17_tpu-32',
+        'base_pipeline_file': 'ssd_efficientdet_d0_512x512_coco17_tpu-8.config',
+        'pretrained_checkpoint': 'efficientdet_d0_coco17_tpu-32.tar.gz',
+    },
+    'ssd-mobilenet-v2-fpnlite-320': {
+        'model_name': 'ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8',
+        'base_pipeline_file': 'ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8.config',
+        'pretrained_checkpoint': 'ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8.tar.gz',
+    },
+    # The centernet model isn't working as of 9/10/22
+    #'centernet-mobilenet-v2': {
+    #    'model_name': 'centernet_mobilenetv2fpn_512x512_coco17_od',
+    #    'base_pipeline_file': 'pipeline.config',
+    #    'pretrained_checkpoint': 'centernet_mobilenetv2fpn_512x512_coco17_od.tar.gz',
+    #}
+}
 
-for epoch in range(num_epochs):
-    print(f"Training epoch: {epoch + 1}/{num_epochs}")
-    # training for one epoch
-    train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=10)
-    # update the learning rate
-    lr_scheduler.step()
-    # evaluate on the test dataset
-    evaluate(model, data_loader_val, device=device)
+model_name = MODELS_CONFIG[chosen_model]['model_name']
+pretrained_checkpoint = MODELS_CONFIG[chosen_model]['pretrained_checkpoint']
+base_pipeline_file = MODELS_CONFIG[chosen_model]['base_pipeline_file']
+```
+2. Set training parameters for the model. You can change num_steps to number that you want but recommended num steps is from 2000 to 5000:
+```
+num_steps = 2000
 
-!nvidia-smi
+if chosen_model == 'efficientdet-d0':
+  batch_size = 4
+else:
+  batch_size = 16
 ```
-5. To view results, you can uncomment these code:
+## Train model:
+Clicking on the play button and waiting for result. It only displays logs once every 100 steps:
 ```
-print('EXPECTED OUTPUT\n')
-plot_img_bbox(torch_to_pil(img), target)
-print('MODEL OUTPUT\n')
-plot_img_bbox(torch_to_pil(img), nms_prediction)
-```
-## Save and import model:
-1. Save model:
-```
-files_dir = r"/content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN/weights"
-version = len([ver for ver in sorted(os.listdir(files_dir)) if ver[-3:] == ".pt"])
-torch.save(model.state_dict(), f"{files_dir}/test({version}).pt")
-print(f"Saved to test({version}).pt")
-```
-2. Load model (Change your model directory):
-```
-num_classes = 2
-model = get_object_detection_model(num_classes)
-model.load_state_dict(torch.load("/content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN/weights/test(15).pt"))
-model.to(device)
-model.eval()
+!python /content/models/research/object_detection/model_main_tf2.py \
+    --pipeline_config_path={pipeline_file} \
+    --model_dir={model_dir} \
+    --alsologtostderr \
+    --num_train_steps={num_steps} \
+    --sample_1_of_n_eval_examples=1
 ```
