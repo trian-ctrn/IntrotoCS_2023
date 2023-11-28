@@ -1,4 +1,4 @@
-# How to use the Yolov7 Notebook:
+# How to use the Yolov7 Notebook
 ## Download Yolov7 necessary files
 ```
 !git clone https://github.com/WongKinYiu/yolov7.git
