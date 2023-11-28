@@ -171,3 +171,45 @@ Clicking on the play button and waiting for result. It only displays logs once e
     --num_train_steps={num_steps} \
     --sample_1_of_n_eval_examples=1
 ```
+## Train model:
+Clicking on the play button and waiting for result. It only displays logs once every 100 steps:
+```
+!python /content/models/research/object_detection/model_main_tf2.py \
+    --pipeline_config_path={pipeline_file} \
+    --model_dir={model_dir} \
+    --alsologtostderr \
+    --num_train_steps={num_steps} \
+    --sample_1_of_n_eval_examples=1
+```
+
+## Test SSD Model and Calculate mAP
+1. Test images. You can change the number of test images to appear in inference test images by changing the images_to_test variable:
+```
+PATH_TO_IMAGES='/content/images/test'   # Path to test images folder
+PATH_TO_MODEL='/content/custom_model_lite/detect.tflite'   # Path to .tflite model file
+PATH_TO_LABELS='/content/labelmap.txt'   # Path to labelmap.txt file
+min_conf_threshold=0.4   # Confidence threshold (try changing this to 0.01 if you don't see any detection results)
+images_to_test = 10   # Number of images to run detection on
+```
+2. Calculate mAP. You can also change the confidence threshold that affect the detection result similar to above method:
+```
+# Set up variables for running inference, this time to get detection results saved as .txt files
+PATH_TO_IMAGES='/content/images/test'   # Path to test images folder
+PATH_TO_MODEL='/content/custom_model_lite/detect.tflite'   # Path to .tflite model file
+PATH_TO_LABELS='/content/labelmap.txt'   # Path to labelmap.txt file
+PATH_TO_RESULTS='/content/mAP_2/input/detection-results' # Folder to save detection results in
+min_conf_threshold=0.1   # Confidence threshold
+
+# Use all the images in the test folder
+image_list = glob.glob(PATH_TO_IMAGES + '/*.jpg') + glob.glob(PATH_TO_IMAGES + '/*.JPG') + glob.glob(PATH_TO_IMAGES + '/*.png') + glob.glob(PATH_TO_IMAGES + '/*.bmp')
+images_to_test = min(500, len(image_list)) # If there are more than 500 images in the folder, just use 500
+
+# Tell function to just save results and not display images
+txt_only = True
+
+# Run inferencing function!
+print('Starting inference on %d images...' % images_to_test)
+tflite_detect_images(PATH_TO_MODEL, PATH_TO_IMAGES, PATH_TO_LABELS, min_conf_threshold, images_to_test, PATH_TO_RESULTS, txt_only)
+print('Finished inferencing!')
+```
+
