@@ -13,7 +13,7 @@
 from google.colab import drive
 drive.mount('/content/gdrive', force_remount=True)
 ```
-3. Remember to redirect the current working directory.
+3. Remember to redirect the current working directory and install necessary packages
 ```
 %cd /content/gdrive/MyDrive/IntroCS_Tree/YOLO/yolov7
 !pip install torchprofile
