@@ -13,10 +13,9 @@
 from google.colab import drive
 drive.mount('/content/gdrive', force_remount=True)
 ```
-3. Remember to change the directory to /IntroCS_Tree/YOLO/yolov7 folder and install necessary packages
+3. Remember to redirect the current working directory.
 ```
 %cd /content/gdrive/MyDrive/IntroCS_Tree/YOLO/yolov7
-!pip install thop
 !pip install torchprofile
 !pip install -r requirements.txt
 ```
