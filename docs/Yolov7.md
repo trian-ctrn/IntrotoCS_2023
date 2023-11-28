@@ -21,6 +21,15 @@ drive.mount('/content/gdrive', force_remount=True)
 !pip install -r requirements.txt
 ```
 ## Training process
+1. Before training model, go to Environment set up to modify your directories for train_path and test_path:
+```
+train_path = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
+test_path = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
+```
+2. Change the epochs depends how you might want the model to perform
+```
+!python train.py --batch 16 --epochs 50 --data data/treecounting.yaml --weights 'yolov7.pt' --workers 8 --device 0
+```
 
 ## Test model
 1. Run Detect block
