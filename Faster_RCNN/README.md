@@ -1,3 +1,4 @@
+<a href="https://github.com/trian-ctrn/IntrotoCS_2023/blob/master/Faster_RCNN/IntroCS_Faster_RCNN.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 # How to use the Faster R-CNN Notebook:
 ## Link Google Drive:
 1. Create a shortcut of IntroCS_Tree folder to your own Google Drive (https://drive.google.com/drive/u/1/folders/1EbMrlHBU0AREOwSJZF18Q55K0qRG5Uoa)
