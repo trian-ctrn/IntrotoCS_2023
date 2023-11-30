@@ -1,5 +1,5 @@
 # IntrotoCS_2023
-This project is part of the Introduction to Computer Science 2023 course at the Vietnamese German University. It involves implementing various popular object detection models to identify the number of trees in an image. Before doing the project, make sure to download this GitHub repository to your local computer or upload it to Google Drive to further operate.
+This project is part of the Introduction to Computer Science 2023 course at the Vietnamese German University. It involves implementing various popular object detection models to identify the number of trees in an image. Before doing the project, make sure to download this GitHub repository to Google Drive to further operate.
 
 ## Members:
 - Yamashita Tri An - 10422004

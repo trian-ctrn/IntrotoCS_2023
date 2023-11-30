@@ -1,19 +1,17 @@
 # How to use the Faster R-CNN Notebook:
 <a href="https://github.com/trian-ctrn/IntrotoCS_2023/blob/master/Faster_RCNN/IntroCS_Faster_RCNN.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
 ## Link Google Drive:
-1. Create a shortcut of IntroCS_Tree folder to your own Google Drive (https://drive.google.com/drive/u/1/folders/1EbMrlHBU0AREOwSJZF18Q55K0qRG5Uoa)
-2. Link your Google Drive with the following 2 blocks (Make sure to modify your directories):
+1. Link your Google Drive with the following 2 blocks (Make sure to modify your directories):
 ```
 from google.colab import drive
 drive.mount('/content/gdrive', force_remount=True)
 ```
-```
-%cd /content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN
-```
 ## Clone project and install libraries:
 1. Clone project to local environment:
 ```
-git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
+!git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
+%cd /content/gdrive/MyDrive/IntrotoCS_2023/Faster_RCNN
 ```
 2. Install necessary libraries:
 ```
@@ -24,8 +22,8 @@ git clone https://github.com/trian-ctrn/IntrotoCS_2023.git
 ## Training phase:
 1. To prepare the dataset, remember to modify your directories for train_dir and test_dir:
 ```
-train_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/train', '/content/gdrive/MyDrive/IntroCS_Tree/ver12/val']
-test_dir = ['/content/gdrive/MyDrive/IntroCS_Tree/ver12/test']
+train_dir = ['/content/gdrive/MyDrive/IntrotoCS_2023/ver12/train', '/content/gdrive/MyDrive/IntrotoCS_2023/ver12/val']
+test_dir = ['/content/gdrive/MyDrive/IntrotoCS_2023/ver12/test']
 ```
 2. In the get_object_detection_model function, you can choose to pretrain or not:
 ```
@@ -66,7 +64,7 @@ plot_img_bbox(torch_to_pil(img), nms_prediction)
 ## Save and import model:
 1. Save model:
 ```
-files_dir = r"/content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN/weights"
+files_dir = r"/content/gdrive/MyDrive/IntrotoCS_2023/Faster_RCNN/weights"
 version = len([ver for ver in sorted(os.listdir(files_dir)) if ver[-3:] == ".pt"])
 torch.save(model.state_dict(), f"{files_dir}/test({version}).pt")
 print(f"Saved to test({version}).pt")
@@ -75,7 +73,7 @@ print(f"Saved to test({version}).pt")
 ```
 num_classes = 2
 model = get_object_detection_model(num_classes)
-model.load_state_dict(torch.load("/content/gdrive/MyDrive/IntroCS_Tree/Faster_RCNN/weights/test(15).pt"))
+model.load_state_dict(torch.load("/content/gdrive/MyDrive/IntrotoCS_2023/Faster_RCNN/weights/test(15).pt"))
 model.to(device)
 model.eval()
 ```
