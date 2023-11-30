@@ -1,5 +1,5 @@
 # IntrotoCS_2023
-This project is part of the Introduction to Computer Science 2023 course at the Vietnamese German University. It involves implementing various popular object detection models to identify the number of trees in an image.
+This project is part of the Introduction to Computer Science 2023 course at the Vietnamese German University. It involves implementing various popular object detection models to identify the number of trees in an image. Before doing the project, make sure to download this GitHub repository to your local computer or upload it to Google Drive to further operate.
 
 ## Members:
 - Yamashita Tri An - 10422004
@@ -14,7 +14,8 @@ This project is part of the Introduction to Computer Science 2023 course at the 
 - Dr. Nhan Le
 
 ## Dataset
-Our tree dataset has 405 images of size 1024 x 1024, which have been divided into the train, validation, and test set with a ratio of 0.7:0.2:0.1. Download the dataset and read the correct readme file of each model to use. The dataset can be found [here](https://drive.google.com/drive/folders/1ylXgcWFMX43FdWxA-oHMlztELLNFdbgY?usp=sharing).
+Our tree dataset has 405 images of size 1024 x 1024, which have been divided into the train, validation, and test set with a ratio of 0.7:0.2:0.1. Download the dataset and read the correct readme file of each model to use. 
+The dataset can be found [here](https://drive.google.com/drive/folders/1ylXgcWFMX43FdWxA-oHMlztELLNFdbgY?usp=sharing).
 
 ## Model Zoo 
 We provide some models to use in this project: 
